@@ -64,10 +64,10 @@ variable "startup_script" {
 }
 
 variable "access_config" {
-  description = "The access config block for the instances. Set to [] to remove external IP."
-  type        = list(string)
+  description = "The access config block for the instances. Set to {} to remove external IP."
+  type        = map(string)
 
-  default = []
+  default = {}
 }
 
 variable "metadata" {
