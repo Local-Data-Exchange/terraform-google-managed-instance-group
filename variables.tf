@@ -246,14 +246,14 @@ variable "autoscaling_cpu" {
 
 variable "autoscaling_metric" {
   description = "Autoscaling, metric policy block as single element array. https://www.terraform.io/docs/providers/google/r/compute_autoscaler.html#metric"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 
 variable "autoscaling_lb" {
   description = "Autoscaling, load balancing utilization policy block as single element array. https://www.terraform.io/docs/providers/google/r/compute_autoscaler.html#load_balancing_utilization"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 
 /* Health checks */
