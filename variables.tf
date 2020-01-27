@@ -67,9 +67,7 @@ variable "access_config" {
   description = "The access config block for the instances. Set to [] to remove external IP."
   type        = list(string)
 
-  default = [
-    {},
-  ]
+  default = []
 }
 
 variable "metadata" {
@@ -303,4 +301,3 @@ variable "ssh_fw_rule" {
   description = "Whether or not the SSH Firewall Rule should be created"
   default     = true
 }
-
