@@ -90,7 +90,9 @@ resource "google_compute_instance_group_manager" "default" {
 
   base_instance_name = var.name
 
-  instance_template = google_compute_instance_template.default[0].self_link
+  version {
+    instance_template = google_compute_instance_template.default[0].self_link
+  }
 
   zone = var.zone
 
@@ -220,7 +222,9 @@ resource "google_compute_region_instance_group_manager" "default" {
 
   base_instance_name = var.name
 
-  instance_template = google_compute_instance_template.default[0].self_link
+  version {
+    instance_template = google_compute_instance_template.default[0].self_link
+  }
 
   region = var.region
 
