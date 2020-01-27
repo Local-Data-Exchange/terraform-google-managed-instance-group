@@ -94,8 +94,6 @@ resource "google_compute_instance_group_manager" "default" {
 
   zone = var.zone
 
-  update_strategy = var.update_strategy
-
   dynamic "update_policy" {
     for_each = [var.rolling_update_policy]
     content {
@@ -203,7 +201,7 @@ data "google_compute_zones" "available" {
 
 locals {
   distribution_zones = {
-    default = [data.google_compute_zones.available.names]
+    default = data.google_compute_zones.available.names
     user    = var.distribution_policy_zones
   }
 
@@ -225,8 +223,6 @@ resource "google_compute_region_instance_group_manager" "default" {
   instance_template = google_compute_instance_template.default[0].self_link
 
   region = var.region
-
-  update_strategy = var.update_strategy
 
   dynamic "update_policy" {
     for_each = [var.rolling_update_policy]
