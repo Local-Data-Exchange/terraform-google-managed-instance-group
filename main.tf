@@ -204,7 +204,7 @@ data "google_compute_zones" "available" {
 locals {
   distribution_zones = {
     default = [data.google_compute_zones.available.names]
-    user    = [var.distribution_policy_zones]
+    user    = var.distribution_policy_zones
   }
 
   dependency_id = element(
