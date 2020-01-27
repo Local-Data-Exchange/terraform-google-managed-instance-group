@@ -69,7 +69,6 @@ module "mig1" {
   subnetwork         = "${google_compute_subnetwork.default.name}"
   instance_labels    = "${var.labels}"
   http_health_check  = "${var.http_health_check}"
-  update_strategy    = "ROLLING_UPDATE"
 
   rolling_update_policy = [{
     type                  = "PROACTIVE"

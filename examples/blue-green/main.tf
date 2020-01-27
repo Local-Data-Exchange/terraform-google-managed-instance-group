@@ -72,7 +72,6 @@ module "mig1" {
   subnetwork         = "${google_compute_subnetwork.default.name}"
   target_pools       = ["${module.gce-lb-fr.target_pool}"]
 
-  update_strategy       = "ROLLING_UPDATE"
   rolling_update_policy = ["${var.rolling_update_policy}"]
 }
 
