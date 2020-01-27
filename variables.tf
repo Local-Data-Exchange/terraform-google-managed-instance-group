@@ -108,8 +108,8 @@ variable "update_strategy" {
 
 variable "rolling_update_policy" {
   description = "The rolling update policy when update_strategy is ROLLING_UPDATE"
-  type        = list(string)
-  default     = []
+  type        = map(string)
+  default     = {}
 }
 
 variable "service_port" {
