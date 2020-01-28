@@ -103,11 +103,6 @@ variable wait_for_instances {
   default     = false
 }
 
-variable update_strategy {
-  description = "The strategy to apply when the instance template changes."
-  default     = "NONE"
-}
-
 variable rolling_update_policy {
   description = "The rolling update policy when update_strategy is ROLLING_UPDATE"
   type        = "list"

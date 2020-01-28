@@ -153,9 +153,7 @@ resource "google_compute_region_instance_group_manager" "default" {
 
   region = "${var.region}"
 
-  update_strategy = "${var.update_strategy}"
-
-  rolling_update_policy = ["${var.rolling_update_policy}"]
+  update_policy = ["${var.rolling_update_policy}"]
 
   distribution_policy_zones = ["${local.distribution_zones["${length(var.distribution_policy_zones) == 0 ? "default" : "user"}"]}"]
 
