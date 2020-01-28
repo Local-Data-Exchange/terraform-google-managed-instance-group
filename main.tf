@@ -31,7 +31,7 @@ resource "google_compute_instance_template" "default" {
     network            = "${var.subnetwork == "" ? var.network : ""}"
     subnetwork         = "${var.subnetwork}"
     access_config      = ["${var.access_config}"]
-    address            = "${var.network_ip}"
+    network_ip         = "${var.network_ip}"
     subnetwork_project = "${var.subnetwork_project == "" ? var.project : var.subnetwork_project}"
   }
 
@@ -80,9 +80,7 @@ resource "google_compute_instance_group_manager" "default" {
 
   zone = "${var.zone}"
 
-  update_strategy = "${var.update_strategy}"
-
-  rolling_update_policy = ["${var.rolling_update_policy}"]
+  update_policy = ["${var.rolling_update_policy}"]
 
   target_pools = ["${var.target_pools}"]
 
