@@ -30,18 +30,7 @@ resource "google_compute_instance_template" "default" {
   network_interface {
     network    = var.subnetwork == "" ? var.network : ""
     subnetwork = var.subnetwork
-    dynamic "access_config" {
-      for_each = [var.access_config]
-      content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
-
-        nat_ip       = lookup(access_config.value, "nat_ip", null)
-        network_tier = lookup(access_config.value, "network_tier", null)
-      }
-    }
+    access_config = [var.access_config]
     network_ip         = var.network_ip
     subnetwork_project = var.subnetwork_project == "" ? var.project : var.subnetwork_project
   }
