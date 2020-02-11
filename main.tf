@@ -169,30 +169,30 @@ resource "google_compute_autoscaler" "default" {
         target = cpu_utilization.value.target
       }
     }
-    dynamic "metric" {
-      for_each = [var.autoscaling_metric]
-      content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
+    # dynamic "metric" {
+    #   for_each = [var.autoscaling_metric]
+    #   content {
+    #     # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
+    #     # which keys might be set in maps assigned here, so it has
+    #     # produced a comprehensive set here. Consider simplifying
+    #     # this after confirming which keys can be set in practice.
 
-        name   = lookup(metric.value, "name", null)
-        target = lookup(metric.value, "target", null)
-        type   = lookup(metric.value, "type", null)
-      }
-    }
-    dynamic "load_balancing_utilization" {
-      for_each = [var.autoscaling_lb]
-      content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
+    #     name   = lookup(metric.value, "name", null)
+    #     target = lookup(metric.value, "target", null)
+    #     type   = lookup(metric.value, "type", null)
+    #   }
+    # }
+    # dynamic "load_balancing_utilization" {
+    #   for_each = [var.autoscaling_lb]
+    #   content {
+    #     # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
+    #     # which keys might be set in maps assigned here, so it has
+    #     # produced a comprehensive set here. Consider simplifying
+    #     # this after confirming which keys can be set in practice.
 
-        target = lookup(load_balancing_utilization.value, "target", null)
-      }
-    }
+    #     target = lookup(load_balancing_utilization.value, "target", null)
+    #   }
+    # }
   }
 }
 
@@ -309,30 +309,30 @@ resource "google_compute_region_autoscaler" "default" {
         target = cpu_utilization.value.target
       }
     }
-    dynamic "metric" {
-      for_each = [var.autoscaling_metric]
-      content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
+    # dynamic "metric" {
+    #   for_each = [var.autoscaling_metric]
+    #   content {
+    #     # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
+    #     # which keys might be set in maps assigned here, so it has
+    #     # produced a comprehensive set here. Consider simplifying
+    #     # this after confirming which keys can be set in practice.
 
-        name   = lookup(metric.value, "name", null)
-        target = lookup(metric.value, "target", null)
-        type   = lookup(metric.value, "type", null)
-      }
-    }
-    dynamic "load_balancing_utilization" {
-      for_each = [var.autoscaling_lb]
-      content {
-        # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
-        # which keys might be set in maps assigned here, so it has
-        # produced a comprehensive set here. Consider simplifying
-        # this after confirming which keys can be set in practice.
+    #     name   = lookup(metric.value, "name", null)
+    #     target = lookup(metric.value, "target", null)
+    #     type   = lookup(metric.value, "type", null)
+    #   }
+    # }
+    # dynamic "load_balancing_utilization" {
+    #   for_each = [var.autoscaling_lb]
+    #   content {
+    #     # TF-UPGRADE-TODO: The automatic upgrade tool can't predict
+    #     # which keys might be set in maps assigned here, so it has
+    #     # produced a comprehensive set here. Consider simplifying
+    #     # this after confirming which keys can be set in practice.
 
-        target = lookup(load_balancing_utilization.value, "target", null)
-      }
-    }
+    #     target = lookup(load_balancing_utilization.value, "target", null)
+    #   }
+    # }
   }
 }
 
