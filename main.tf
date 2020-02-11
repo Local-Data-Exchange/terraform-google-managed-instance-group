@@ -177,7 +177,7 @@ resource "google_compute_autoscaler" "default" {
         # produced a comprehensive set here. Consider simplifying
         # this after confirming which keys can be set in practice.
 
-        name   = metric.value.name
+        name   = lookup(metric.value, "name", null)
         target = lookup(metric.value, "target", null)
         type   = lookup(metric.value, "type", null)
       }
@@ -190,7 +190,7 @@ resource "google_compute_autoscaler" "default" {
         # produced a comprehensive set here. Consider simplifying
         # this after confirming which keys can be set in practice.
 
-        target = load_balancing_utilization.value.target
+        target = lookup(load_balancing_utilization.value, "target", null)
       }
     }
   }
@@ -317,7 +317,7 @@ resource "google_compute_region_autoscaler" "default" {
         # produced a comprehensive set here. Consider simplifying
         # this after confirming which keys can be set in practice.
 
-        name   = metric.value.name
+        name   = lookup(metric.value, "name", null)
         target = lookup(metric.value, "target", null)
         type   = lookup(metric.value, "type", null)
       }
@@ -330,7 +330,7 @@ resource "google_compute_region_autoscaler" "default" {
         # produced a comprehensive set here. Consider simplifying
         # this after confirming which keys can be set in practice.
 
-        target = load_balancing_utilization.value.target
+        target = lookup(load_balancing_utilization.value, "target", null)
       }
     }
   }
