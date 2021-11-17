@@ -91,7 +91,6 @@ resource "google_compute_instance_group_manager" "default" {
   base_instance_name = var.name
 
   version {
-    name = google_compute_instance_template.default[0].name
     instance_template = google_compute_instance_template.default[0].self_link
   }
 
@@ -146,6 +145,9 @@ resource "google_compute_instance_group_manager" "default" {
   #   when    = create
   #   command = var.local_cmd_create
   # }
+  lifecycle {
+    ignore_changes = [version.0.name]
+  }
 }
 
 resource "google_compute_autoscaler" "default" {
@@ -224,7 +226,6 @@ resource "google_compute_region_instance_group_manager" "default" {
   base_instance_name = var.name
 
   version {
-    name = google_compute_instance_template.default[0].name
     instance_template = google_compute_instance_template.default[0].self_link
   }
 
@@ -286,6 +287,9 @@ resource "google_compute_region_instance_group_manager" "default" {
   // Initial instance verification can take 10-15m when a health check is present.
   timeouts {
     create = var.http_health_check ? "15m" : "5m"
+  }
+  lifecycle {
+    ignore_changes = [version.0.name]
   }
 }
 
