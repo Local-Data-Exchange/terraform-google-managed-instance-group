@@ -146,7 +146,7 @@ resource "google_compute_instance_group_manager" "default" {
   #   command = var.local_cmd_create
   # }
   lifecycle {
-    ignore_changes = [version.name]
+    ignore_changes = [version.0.name]
   }
 }
 
