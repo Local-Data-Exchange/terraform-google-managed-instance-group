@@ -289,7 +289,10 @@ resource "google_compute_region_instance_group_manager" "default" {
     create = var.http_health_check ? "15m" : "5m"
   }
   lifecycle {
-    ignore_changes = [version.0.name]
+    ignore_changes = [
+      version.0.name,
+      target_size
+    ]
   }
 }
 
